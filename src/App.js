@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Steptwo from "./composant/Steptwo";
+import Footer from "./composant/Footer";
+import Form from "./composant/Form";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [switch1, setSwitch1] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {switch1 === false ? (
+        <Form
+          name={name}
+          setname={setName}
+          email={email}
+          setemail={setEmail}
+          password={password}
+          setpassword={setPassword}
+          passwordconfirmation={passwordConfirmation}
+          setpasswordconfirmation={setPasswordConfirmation}
+          switch1={switch1}
+          setSwitch1={setSwitch1}
+        />
+      ) : (
+        <Steptwo
+          switch1={switch1}
+          setSwitch1={setSwitch1}
+          name={name}
+          email={email}
+          password={password}
+        />
+      )}
+
+      <Footer text="Made with React at Le Reacteur by Doud" />
     </div>
   );
 }
